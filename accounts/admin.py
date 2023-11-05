@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .models import User, RecycleUser
-from .form import UserChangeForm, UserCreationForm
+from .forms import UserChangeForm, UserCreationForm
 from django_jalali.admin.filters import JDateFieldListFilter
 
 

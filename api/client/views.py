@@ -7,7 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 from accounts.models import User
 from home.models import AboutMeModels, SkillModel, EducationModel, ExpreienceWorkModel, ContactUsModel
 from home.models import ProjectModel, AwardsModel, BoookArticleModel, SciolModel, AuthoreModel
-from permission import IsOwner
+from api.client.base_permission import IsOwner
 
 
 class UserRegisterApiView(CreateAPIView):

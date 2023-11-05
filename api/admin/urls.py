@@ -18,6 +18,7 @@ router.register(r"boookarticle", views.BoookArticleviewSet, basename="boookartic
 router.register(r"contactus", views.ContactUsviewSet, basename="contactus")
 
 
+app_name = 'admin_api'
 urlpatterns = [
     path('', include(router.urls)),
 ]

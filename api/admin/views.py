@@ -1,5 +1,4 @@
 from rest_framework import viewsets
-from rest_framework.permissions import IsAdminUser
 from .serializers import UserSerlizers, AboutMeSerializrs, SkillSerializrs, SciolSerializrs, \
     ExpreienceWorkSerializrs, EducationSerializrs, ProjectSerializrs, AwardsSerializrs, \
         AuthoreSerializrs, BoookArticleSerializrs, ContactUsSerializrs
@@ -7,7 +6,7 @@ from accounts.models import User
 from home.models import AboutMeModels, SkillModel, SciolModel, ExpreienceWorkModel, \
     EducationModel, ProjectModel, AwardsModel, ContactUsModel, BoookArticleModel, \
         AuthoreModel
-from base_permission import IsSuperUser
+from .base_permission import IsSuperUser
 
 
 class UserViewSet(viewsets.ModelViewSet):
