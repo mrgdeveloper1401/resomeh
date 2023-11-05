@@ -1,7 +1,7 @@
-from api.serializer.accounts import UserRegisterSerializer,UserProfileSerializer
-from api.serializer.accounts import UserChangePasswordSerializer, AboutMeSerializers, SkillSerializers
-from api.serializer.accounts import SciolSerializers, EducationSerializers, ExprienceWorkSerializers
-from api.serializer.accounts import ProjectSerializers, AwardsSerilizers, BookArticleSerilizers, ContactUsSerializers
+from api.client.serializers import UserRegisterSerializer,UserProfileSerializer
+from api.client.serializers import UserChangePasswordSerializer, AboutMeSerializers, SkillSerializers
+from api.client.serializers import SciolSerializers, EducationSerializers, ExprienceWorkSerializers
+from api.client.serializers import ProjectSerializers, AwardsSerilizers, BookArticleSerilizers, ContactUsSerializers
 from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView, UpdateAPIView
 from accounts.models import User
 from home.models import AboutMeModels, SkillModel, EducationModel, ExpreienceWorkModel, ContactUsModel
