@@ -7,7 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 from accounts.models import User
 from home.models import AboutMeModels, SkillModel, EducationModel, ExpreienceWorkModel, ContactUsModel
 from home.models import ProjectModel, AwardsModel, BoookArticleModel, SciolModel, AuthoreModel
-
+from permission import IsOwner
 
 
 class UserRegisterApiView(CreateAPIView):
@@ -19,7 +19,7 @@ class UserRegisterApiView(CreateAPIView):
 class UserProfileApiView(RetrieveUpdateDestroyAPIView):
     serializer_class = UserProfileSerializer
     queryset = User.objects.all()
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticated, IsOwner)
     
 
 class UserChangePasswordApiView(UpdateAPIView):
