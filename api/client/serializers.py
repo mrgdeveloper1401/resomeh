@@ -103,7 +103,7 @@ class SciolSerializers(serializers.ModelSerializer):
 
 
 class ExprienceWorkSerializers(serializers.ModelSerializer):
-    created_at = JDateTimeField()
+    created_at = JDateTimeField(required=False)
 
     class Meta:
         model = ExpreienceWorkModel
@@ -119,6 +119,9 @@ class ExprienceWorkSerializers(serializers.ModelSerializer):
             'status_work',
             'created_at',
         )
+        extra_kwargs = {
+            'user': {'required': False}
+        }
 
 
 class EducationSerializers(serializers.ModelSerializer):

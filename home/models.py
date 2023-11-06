@@ -91,6 +91,7 @@ class EducationModel(CreateModel):
     status_education = models.CharField(_('studying'),
                                         choices=StatusEducation.choices,
                                         default=StatusEducation.studying,
+                                        max_length=8
                                         )
 
     def __str__(self) -> str:
@@ -113,11 +114,11 @@ class ExpreienceWorkModel(CreateModel):
     to_date_exprence = jmodels.jDateField(_('to date'), blank=True, null=True)
 
     class StatusWorkOraginaztion(models.TextChoices):
-        busy = "b", _("I am busy now"),
-        done = 'd', _("I dont work here")
-        found = 'f', _('looking for work')
+        busy = "busy", _("I am busy now"),
+        done = 'done', _("I dont work here")
+        found = 'found', _('looking for work')
 
-    status_work = models.CharField(_('status work'), max_length=1,
+    status_work = models.CharField(_('status work'), max_length=5,
                                    default=StatusWorkOraginaztion.done,
                                    choices=StatusWorkOraginaztion.choices)
 
