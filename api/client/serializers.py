@@ -70,7 +70,7 @@ class AboutMeSerializers(serializers.ModelSerializer):
 
 
 class SkillSerializers(serializers.ModelSerializer):
-    created_at = JDateTimeField()
+    created_at = JDateTimeField(required=False)
 
     class Meta:
         model = SkillModel
@@ -80,6 +80,9 @@ class SkillSerializers(serializers.ModelSerializer):
             'skill_name',
             'created_at',
         )
+        extra_kwargs = {
+            'user': {'required': False},
+        }
 
 
 class SciolSerializers(serializers.ModelSerializer):

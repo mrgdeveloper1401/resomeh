@@ -38,6 +38,9 @@ class SkillCreateApiView(CreateAPIView):
     serializer_class = serializers.SkillSerializers
     permission_classes = (IsAuthenticated,)
 
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
 
 class SkillUpdateRetrieveDeleteApiView(RetrieveUpdateDestroyAPIView):
     queryset = SkillModel.objects.all()
