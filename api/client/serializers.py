@@ -86,7 +86,7 @@ class SkillSerializers(serializers.ModelSerializer):
 
 
 class SciolSerializers(serializers.ModelSerializer):
-    created_at = JDateTimeField()
+    created_at = JDateTimeField(required=False)
 
     class Meta:
         model = SciolModel
@@ -97,6 +97,9 @@ class SciolSerializers(serializers.ModelSerializer):
             'sciol_url',
             'created_at',
         )
+        extra_kwargs = {
+            'user': {'required': False}
+        }
 
 
 class ExprienceWorkSerializers(serializers.ModelSerializer):

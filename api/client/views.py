@@ -53,6 +53,9 @@ class SciolCreateApiView(CreateAPIView):
     serializer_class = serializers.SciolSerializers
     permission_classes = (IsAuthenticated,)
 
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
 
 class SciolUpdateRetriveDeleteApiView(RetrieveUpdateDestroyAPIView):
     queryset = SciolModel.objects.all()
@@ -64,6 +67,9 @@ class EducatioCreareApiView(CreateAPIView):
     queryset = EducationModel.objects.all()
     serializer_class = serializers.EducationSerializers
     permission_classes = (IsAuthenticated,)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 class EducatioUpdateDeleteRetiveApiView(RetrieveUpdateDestroyAPIView):
@@ -77,14 +83,11 @@ class ExprienceCreateApiView(CreateAPIView):
     serializer_class = serializers.ExprienceWorkSerializers
     permission_classes = (IsAuthenticated,)
 
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
 
 class ExpriencRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
-    queryset = ExpreienceWorkModel
-    serializer_class = serializers.ExprienceWorkSerializers
-    permission_classes = (IsAuthenticated,)
-
-
-class ExprienceUpdateDeleteDestroyApiView(RetrieveUpdateDestroyAPIView):
     queryset = ExpreienceWorkModel
     serializer_class = serializers.ExprienceWorkSerializers
     permission_classes = (IsAuthenticated,)
@@ -94,6 +97,9 @@ class ProjectCreateApiView(CreateAPIView):
     queryset = ProjectModel.objects.all()
     serializer_class = serializers.ProjectSerializers
     permission_classes = (IsAuthenticated,)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 class ProjectUpdateRetriveDestroyApiView(RetrieveUpdateDestroyAPIView):
@@ -105,7 +111,10 @@ class ProjectUpdateRetriveDestroyApiView(RetrieveUpdateDestroyAPIView):
 class AwardsCreateApiView(CreateAPIView):
     queryset = AwardsModel.objects.all()
     serializer_class = serializers.AwardsSerilizers
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated, )
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 class AwardsRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
@@ -119,6 +128,9 @@ class AuthoreCreateAPIView(CreateAPIView):
     serializer_class = serializers.AwardsSerilizers
     permission_classes = (IsAuthenticated,)
 
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
 
 class AuthoreRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     queryset = AuthoreModel.objects.all()
@@ -130,6 +142,9 @@ class BookArticleCreateApiView(CreateAPIView):
     queryset = BoookArticleModel.objects.all()
     serializer_class = serializers.BookArticleSerilizers
     permission_classes = (IsAuthenticated,)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 class BookArticleRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
