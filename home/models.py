@@ -188,7 +188,7 @@ class BoookArticleModel(CreateModel):
     class Meta:
         verbose_name = _('book artiles')
         verbose_name_plural = _('book artiles')
-        db_tablespace = 'book_article'
+        db_table = 'book_article'
         
     
     

@@ -7,12 +7,21 @@ from django_jalali.serializers.serializerfield import JDateField, JDateTimeField
 class UserRegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('email', 'full_name', 'password', 'id')
+        fields = ('email', 'full_name', 'password', 'mobile_phone', 'id')
         
         extra_kwargs = {
             'password': {"write_only": True},
-            'id': {'read_only': True}
+            'style': {'input_type': 'password'}
         }
+        
+    def create(self, validated_data):
+        user = User.objects.create_user(
+            email=validated_data['email'],
+            full_name=validated_data['full_name'],
+            password=validated_data['password'],
+            mobile_phone=validated_data['mobile_phone']
+        )
+        return user
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
@@ -27,6 +36,9 @@ class UserProfileSerializer(serializers.ModelSerializer):
             'last_login',
             'id'
         )
+    
+    def update(self, instance, validated_data):
+        return super().update(instance, validated_data)
 
 
 class UserChangePasswordSerializer(serializers.ModelSerializer):

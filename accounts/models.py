@@ -9,8 +9,7 @@ from core.models import CreateModel
 class User(AbstractBaseUser, PermissionsMixin, CreateModel):
     full_name = models.CharField(_('Full name'), max_length=100)
     email = models.EmailField(_('Email'), max_length=100, unique=True)
-    mobile_phone = models.CharField(_('mobile phone'), max_length=11, unique=True, 
-                                    blank=True, null=True)
+    mobile_phone = models.CharField(_('mobile phone'), max_length=11, unique=True)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     last_login = jmodels.jDateTimeField(_("last login"), default=timezone.now())
