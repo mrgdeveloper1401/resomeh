@@ -79,12 +79,19 @@ class EducationModel(CreateModel):
     user = models.ForeignKey(User, on_delete=models.PROTECT, related_name='education')
     fields_of_study = models.CharField(_('field of study'), max_length=100)
     university = models.CharField(_('university'), max_length=100)
-    score = models.DecimalField(_('score'), max_digits=4, decimal_places=2)
+    score = models.DecimalField(_('score'), max_digits=4, decimal_places=2, blank=True)
     explain_education = models.TextField(_('explain education'), max_length=500,
                                          help_text='Describe where you were trained and educated')
     at_education = jmodels.jDateField(_('at time'))
     to_education = jmodels.jDateField(_('to time'), blank=True, null=True)
-    status_education = models.BooleanField(_('studying'), default=False, blank=True)
+
+    class StatusEducation(models.TextChoices):
+        studying = 'studying', _('studying')
+        done = 'done', _('done')
+    status_education = models.CharField(_('studying'),
+                                        choices=StatusEducation.choices,
+                                        default=StatusEducation.studying,
+                                        )
 
     def __str__(self) -> str:
         return self.user.email

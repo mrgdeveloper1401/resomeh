@@ -122,15 +122,19 @@ class ExprienceWorkSerializers(serializers.ModelSerializer):
 
 
 class EducationSerializers(serializers.ModelSerializer):
-    created_at = JDateTimeField()
+    created_at = JDateTimeField(required=False)
 
     class Meta:
         model = EducationModel
         fields = '__all__'
 
+        extra_kwargs = {
+            'user': {'required': False}
+        }
+
 
 class ProjectSerializers(serializers.ModelSerializer):
-    created_at = JDateTimeField()
+    created_at = JDateTimeField(required=False)
 
     class Meta:
         model = ProjectModel
@@ -147,32 +151,48 @@ class ProjectSerializers(serializers.ModelSerializer):
 
         )
 
+        extra_kwargs = {
+            'user': {'required': True}
+        }
+
 
 class AwardsSerilizers(serializers.ModelSerializer):
-    created_at = JDateTimeField()
+    created_at = JDateTimeField(required=False)
 
     class Meta:
         model = AwardsModel
         fields = '__all__'
 
+        extra_kwargs = {
+            'user': {'required': True}
+        }
+
 
 class AuthoreSerilizers(serializers.ModelSerializer):
-    created_at = JDateTimeField()
+    created_at = JDateTimeField(required=False)
 
     class Meta:
         model = AuthoreModel
 
+        extra_kwargs = {
+            'user': {'required': True}
+        }
+
 
 class BookArticleSerilizers(serializers.ModelSerializer):
-    created_at = JDateTimeField()
+    created_at = JDateTimeField(required=False)
 
     class Meta:
         model = BoookArticleModel
         fields = '__all__'
 
+        extra_kwargs = {
+            'user': {'required': True}
+        }
+
 
 class ContactUsSerializers(serializers.ModelSerializer):
-    created_at = JDateTimeField()
+    created_at = JDateTimeField(required=False)
 
     class Meta:
         model = ContactUsModel
