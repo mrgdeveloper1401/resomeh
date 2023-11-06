@@ -148,14 +148,15 @@ class ProjectSerializers(serializers.ModelSerializer):
             'explain_project',
             'project_url',
             'image',
-            'from_date',
-            'up_to_date',
+            'at_data',
+            'to_data',
             'status_project',
+            'created_at',
 
         )
 
         extra_kwargs = {
-            'user': {'required': True}
+            'user': {'required': False}
         }
 
 

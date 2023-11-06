@@ -138,16 +138,16 @@ class ProjectModel(CreateModel):
     project_url = models.URLField(_('project url'), blank=True)
     image = models.ImageField(blank=True, null=True,
                               upload_to='project/%Y/%m/%d')
-    from_date = jmodels.jDateField(_('from date'))
-    up_to_date = jmodels.jDateField(_('up to date'), blank=True, null=True)
+    at_data = jmodels.jDateField(_('from date'))
+    to_data = jmodels.jDateField(_('up to date'), blank=True, null=True)
 
     class StatusProject(models.TextChoices):
-        start = 's', _('start'),
-        doing = 'd', _('doing'),
-        complate = 'c', _('complate'),
+        start = 'start', _('start'),
+        doing = 'doing', _('doing'),
+        complate = 'complate', _('complate'),
 
     status_project = models.CharField(_('status'),
-                                      max_length=1,
+                                      max_length=8,
                                       default=StatusProject.complate,
                                       choices=StatusProject.choices)
 
