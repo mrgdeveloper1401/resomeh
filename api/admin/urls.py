@@ -13,7 +13,6 @@ router.register(r"expreiencework", views.ExpreienceWorkviewSet, basename="exprei
 router.register(r"education", views.EducationviewSet, basename="education")
 router.register(r"project", views.ProjectviewSet, basename="project")
 router.register(r"awards", views.AwardsviewSet, basename="awards")
-router.register(r"authore", views.AuthoreviewSet, basename="authore")
 router.register(r"boookarticle", views.BoookArticleviewSet, basename="boookarticle")
 router.register(r"contactus", views.ContactUsviewSet, basename="contactus")
 

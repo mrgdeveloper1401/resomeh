@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from accounts.models import User
 from home.models import AboutMeModels, SkillModel, SciolModel, EducationModel, ExpreienceWorkModel
-from home.models import ProjectModel, AwardsModel, BoookArticleModel, AuthoreModel, ContactUsModel
+from home.models import ProjectModel, AwardsModel, BoookArticleModel, ContactUsModel
 from django_jalali.serializers.serializerfield import JDateField, JDateTimeField
 
 
@@ -172,17 +172,6 @@ class AwardsSerilizers(serializers.ModelSerializer):
         }
 
 
-class AuthoreSerilizers(serializers.ModelSerializer):
-    created_at = JDateTimeField(required=False)
-
-    class Meta:
-        model = AuthoreModel
-
-        extra_kwargs = {
-            'user': {'required': True}
-        }
-
-
 class BookArticleSerilizers(serializers.ModelSerializer):
     created_at = JDateTimeField(required=False)
 
@@ -191,7 +180,7 @@ class BookArticleSerilizers(serializers.ModelSerializer):
         fields = '__all__'
 
         extra_kwargs = {
-            'user': {'required': True}
+            'user': {'required': False}
         }
 
 

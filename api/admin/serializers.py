@@ -1,8 +1,7 @@
 from rest_framework import serializers
 from accounts.models import User
 from home.models import AboutMeModels, SkillModel, SciolModel, ExpreienceWorkModel, \
-    EducationModel, ProjectModel, AwardsModel, ContactUsModel, BoookArticleModel, \
-        AuthoreModel
+    EducationModel, ProjectModel, AwardsModel, ContactUsModel, BoookArticleModel
         
 
 class UserSerlizers(serializers.ModelSerializer):
@@ -51,13 +50,7 @@ class AwardsSerializrs(serializers.ModelSerializer):
     class Meta:
         model = AwardsModel
         fields = '__all__'
-        
-        
-class AuthoreSerializrs(serializers.ModelSerializer):
-    class Meta:
-        model = AuthoreModel
-        fields = '__all__'
-        
+
     
 class BoookArticleSerializrs(serializers.ModelSerializer):
     class Meta:

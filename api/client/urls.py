@@ -21,9 +21,7 @@ urlpatterns = [
     path('api/project-rud/<int:pk>/', views.ProjectUpdateRetriveDestroyApiView.as_view(), name='rud_project'),
     path('api/awards-create/', views.AwardsCreateApiView.as_view(), name='create_awards'),
     path('api/awards-rud/<int:pk>/', views.AwardsRetrieveUpdateDestroyAPIView.as_view(), name='rud_awards'),
-    path('api/authore-create/', views.AuthoreCreateAPIView.as_view(), name='create_authore'),
-    path('api/authore-rud/<int:pk>/', views.AuthoreRetrieveUpdateDestroyAPIView.as_view(), name='rud_authore'),
     path('api/book-article-create/', views.BookArticleCreateApiView.as_view(), name='create-book-article'),
-    path('api/rud-book-article/<int:pk>/', views.BookArticleRetrieveUpdateDestroyAPIView.as_view(), name='rud-book-article'),
+    path('api/book-article-rud/<int:pk>/', views.BookArticleRetrieveUpdateDestroyAPIView.as_view(), name='rud-book-article'),
     path('api/contact-us-create/', views.ContactUsCreateApiview.as_view(), name='create-contact-us'),
 ]

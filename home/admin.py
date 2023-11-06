@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import AuthoreModel, SciolModel, AboutMeModels, SkillModel, AwardsModel, BoookArticleModel
+from .models import SciolModel, AboutMeModels, SkillModel, AwardsModel, BoookArticleModel
 from .models import EducationModel, ExpreienceWorkModel, ContactUsModel, ProjectModel, CreateModel
 from django_jalali.admin.filters import JDateFieldListFilter
 
@@ -62,13 +62,4 @@ class AwardsModelAdmin(admin.ModelAdmin):
 @admin.register(BoookArticleModel)
 class BooksArticleAdmin(admin.ModelAdmin):
     list_display = ('title', 'year',)
-    list_filter = ('created_at',)
-
-    def publisher_to_str(self, obj):
-        return ', '.join([author.auther for author in obj.publisher.all()])
-
-
-@admin.register(AuthoreModel)
-class AutherAdmin(admin.ModelAdmin):
-    list_display = ('auther', 'id')
     list_filter = ('created_at',)

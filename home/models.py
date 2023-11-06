@@ -172,24 +172,11 @@ class AwardsModel(CreateModel):
         db_table = 'awards'
 
 
-class AuthoreModel(CreateModel):
-    auther = models.CharField(_('auther'), max_length=100)
-
-    def __str__(self) -> str:
-        return self.auther
-
-    class Meta:
-        verbose_name = _('authore')
-        verbose_name_plural = _('authore')
-        db_table = 'authore'
-
-
 class BoookArticleModel(CreateModel):
     user = models.ForeignKey(User, related_name='books', on_delete=models.PROTECT)
-    title = models.CharField(_('title'), max_length=50,
-                             blank=True, null=True)
+    title = models.CharField(_('title'), max_length=50)
     # publisher = models.ForeignKey(AuthoreModel, related_name='authors', on_delete=models.PROTECT)
-    year = jmodels.jDateField(_('year'), blank=True, null=True)
+    year = jmodels.jDateField(_('year'))
 
     def __str__(self) -> str:
         return self.title
