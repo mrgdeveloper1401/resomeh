@@ -1,13 +1,12 @@
 from rest_framework.urls import path
-from api.client.views import UserRegisterApiView, UserProfileApiView, UserChangePasswordApiView
+from api.client.views import UserRegisterApiView, UserChangePasswordApiView
 from api.client import views
 
 
-app_name = 'accounts_api'
+app_name = 'client_api'
 urlpatterns = [
     path('api/logup/', UserRegisterApiView.as_view(),name='logup_api'),
-    path('api/profile/<int:pk>/', UserProfileApiView.as_view(), name='profile_api'),
-    path('api/profile/change_password/<int:pk>/', UserChangePasswordApiView.as_view(), name='change_password_api'),
+    path('api/change_password/<int:pk>/', UserChangePasswordApiView.as_view(), name='change_password_api'),
     path('api/create-about-me/<int:pk>/', views.AboutMeApiView.as_view(), name='about_me_api'),
     path('api/about-me-rud/<int:pk>/', views.AboutMeUpdateRetieveDeleteApiView.as_view(), name='about_me_rud_api'),
     path('api/skills/<int:pk>/', views.SkillCreateApiView.as_view(), name='create skill'),

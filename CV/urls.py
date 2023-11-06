@@ -41,7 +41,7 @@ urlpatterns = [
     # rest pannel login urls
     path('api-auth/', include('rest_framework.urls', namespace='rest_api')),
     # api client urls
-    path('accounts/', include('api.client.urls', namespace='accounts_api')),
+    path('client_api/', include('api.client.urls', namespace='client_api')),
     # api admin urls
     path('admin/api/', include('api.admin.urls', namespace='admin_api')),
     

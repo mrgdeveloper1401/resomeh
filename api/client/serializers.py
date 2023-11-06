@@ -4,16 +4,17 @@ from home.models import AboutMeModels, SkillModel, SciolModel, EducationModel, E
 from home.models import ProjectModel, AwardsModel, BoookArticleModel, AuthoreModel, ContactUsModel
 from django_jalali.serializers.serializerfield import JDateField, JDateTimeField
 
+
 class UserRegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('email', 'full_name', 'password', 'mobile_phone', 'id')
-        
+
         extra_kwargs = {
             'password': {"write_only": True},
             'style': {'input_type': 'password'}
         }
-        
+
     def create(self, validated_data):
         user = User.objects.create_user(
             email=validated_data['email'],
@@ -24,27 +25,11 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         return user
 
 
-class UserProfileSerializer(serializers.ModelSerializer):
-    created_at = JDateTimeField()
-    class Meta:
-        model = User
-        fields = (
-            'full_name',
-            'email',
-            'mobile_phone',
-            'created_at',
-            'last_login',
-            'id'
-        )
-    
-    def update(self, instance, validated_data):
-        return super().update(instance, validated_data)
-
-
 class UserChangePasswordSerializer(serializers.ModelSerializer):
     password = serializers.CharField(required=True)
     new_password = serializers.CharField(required=True)
     new_password_confirm = serializers.CharField(required=True)
+
     class Meta:
         model = User
         fields = (
@@ -59,10 +44,11 @@ class UserChangePasswordSerializer(serializers.ModelSerializer):
         else:
             raise serializers.ValidationError({'password': 'old password is wrong'})
         return instance
-    
+
 
 class AboutMeSerializers(serializers.ModelSerializer):
     birth_day = JDateField()
+
     class Meta:
         model = AboutMeModels
         fields = (
@@ -77,10 +63,15 @@ class AboutMeSerializers(serializers.ModelSerializer):
             'address',
             'birth_day',
         )
+        extra_kwargs = {
+            'marital_status': {'required': True},
+            'user': {'required': False}
+        }
 
 
 class SkillSerializers(serializers.ModelSerializer):
     created_at = JDateTimeField()
+
     class Meta:
         model = SkillModel
         fields = (
@@ -89,10 +80,11 @@ class SkillSerializers(serializers.ModelSerializer):
             'skill_name',
             'created_at',
         )
-        
+
 
 class SciolSerializers(serializers.ModelSerializer):
     created_at = JDateTimeField()
+
     class Meta:
         model = SciolModel
         fields = (
@@ -102,10 +94,11 @@ class SciolSerializers(serializers.ModelSerializer):
             'sciol_url',
             'created_at',
         )
-        
-        
+
+
 class ExprienceWorkSerializers(serializers.ModelSerializer):
     created_at = JDateTimeField()
+
     class Meta:
         model = ExpreienceWorkModel
         fields = (
@@ -120,17 +113,19 @@ class ExprienceWorkSerializers(serializers.ModelSerializer):
             'status_work',
             'created_at',
         )
-        
+
 
 class EducationSerializers(serializers.ModelSerializer):
     created_at = JDateTimeField()
+
     class Meta:
         model = EducationModel
         fields = '__all__'
-        
+
 
 class ProjectSerializers(serializers.ModelSerializer):
     created_at = JDateTimeField()
+
     class Meta:
         model = ProjectModel
         fields = (
@@ -143,12 +138,13 @@ class ProjectSerializers(serializers.ModelSerializer):
             'from_date',
             'up_to_date',
             'status_project',
-            
+
         )
-        
+
 
 class AwardsSerilizers(serializers.ModelSerializer):
     created_at = JDateTimeField()
+
     class Meta:
         model = AwardsModel
         fields = '__all__'
@@ -156,19 +152,22 @@ class AwardsSerilizers(serializers.ModelSerializer):
 
 class AuthoreSerilizers(serializers.ModelSerializer):
     created_at = JDateTimeField()
+
     class Meta:
         model = AuthoreModel
-        
-    
+
+
 class BookArticleSerilizers(serializers.ModelSerializer):
     created_at = JDateTimeField()
+
     class Meta:
         model = BoookArticleModel
         fields = '__all__'
-        
-    
+
+
 class ContactUsSerializers(serializers.ModelSerializer):
     created_at = JDateTimeField()
+
     class Meta:
         model = ContactUsModel
         fields = '__all__'
