@@ -162,13 +162,9 @@ class ProjectModel(CreateModel):
 
 class AwardsModel(CreateModel):
     user = models.ForeignKey(User, on_delete=models.PROTECT, related_name='awards')
-    awards_name = models.CharField(_('awards_name'), max_length=50,
-                                   blank=True, null=True)
-    explain_awards = models.TextField(_('explain awards'), max_length=500,
-                                      blank=True,
-                                      null=True)
-    year_awards = jmodels.jDateField(_('year'),
-                                     blank=True, null=True)
+    awards_name = models.CharField(_('awards_name'), max_length=50)
+    explain_awards = models.TextField(_('explain awards'), max_length=500)
+    year_awards = jmodels.jDateField(_('year'))
 
     class Meta:
         verbose_name = _('awards')

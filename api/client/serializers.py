@@ -168,7 +168,7 @@ class AwardsSerilizers(serializers.ModelSerializer):
         fields = '__all__'
 
         extra_kwargs = {
-            'user': {'required': True}
+            'user': {'required': False}
         }
 
 
