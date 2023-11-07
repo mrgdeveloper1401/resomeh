@@ -6,6 +6,7 @@ from django.utils import timezone
 from .managers import UsersManager
 from core.models import CreateModel
 
+
 class User(AbstractBaseUser, PermissionsMixin, CreateModel):
     full_name = models.CharField(_('Full name'), max_length=100)
     email = models.EmailField(_('Email'), max_length=100, unique=True)
@@ -15,10 +16,10 @@ class User(AbstractBaseUser, PermissionsMixin, CreateModel):
     last_login = jmodels.jDateTimeField(_("last login"), default=timezone.now())
 
     objects = UsersManager()
-    
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ('full_name', 'mobile_phone')
-    
+
     # def has_perm(self, perm, obj=None):
     #     "Does the user have a specific permission?"
     #     # Simplest possible answer: Yes, always
@@ -28,11 +29,10 @@ class User(AbstractBaseUser, PermissionsMixin, CreateModel):
     #     "Does the user have permissions to view the app `app_label`?"
     #     # Simplest possible answer: Yes, always
     #     return True
-    
+
     @property
     def is_admin(self):
         return self.is_staff
-    
 
 
 class RecycleUser(User):

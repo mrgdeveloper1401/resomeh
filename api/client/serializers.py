@@ -65,7 +65,8 @@ class AboutMeSerializers(serializers.ModelSerializer):
         )
         extra_kwargs = {
             'marital_status': {'required': True},
-            'user': {'required': False}
+            'user': {'required': False},
+            'gender_choose': {'required': True}
         }
 
 
@@ -120,7 +121,8 @@ class ExprienceWorkSerializers(serializers.ModelSerializer):
             'created_at',
         )
         extra_kwargs = {
-            'user': {'required': False}
+            'user': {'required': False},
+            'status_work': {'required': True}
         }
 
 
@@ -132,7 +134,8 @@ class EducationSerializers(serializers.ModelSerializer):
         fields = '__all__'
 
         extra_kwargs = {
-            'user': {'required': False}
+            'user': {'required': False},
+            'status_education': {'required': True}
         }
 
 
@@ -156,7 +159,8 @@ class ProjectSerializers(serializers.ModelSerializer):
         )
 
         extra_kwargs = {
-            'user': {'required': False}
+            'user': {'required': False},
+            'status_project': {'required': True}
         }
 
 

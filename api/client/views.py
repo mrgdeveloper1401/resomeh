@@ -28,7 +28,7 @@ class AboutMeApiView(CreateAPIView):
 class AboutMeUpdateRetieveDeleteApiView(RetrieveUpdateDestroyAPIView):
     queryset = models.AboutMeModels.objects.all()
     serializer_class = serializers.AboutMeSerializers
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated, IsOwner)
 
 
 class SkillCreateApiView(CreateAPIView):
@@ -43,7 +43,7 @@ class SkillCreateApiView(CreateAPIView):
 class SkillUpdateRetrieveDeleteApiView(RetrieveUpdateDestroyAPIView):
     queryset = models.SkillModel.objects.all()
     serializer_class = serializers.SkillSerializers
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated, IsOwner)
 
 
 class SciolCreateApiView(CreateAPIView):
@@ -58,7 +58,7 @@ class SciolCreateApiView(CreateAPIView):
 class SciolUpdateRetriveDeleteApiView(RetrieveUpdateDestroyAPIView):
     queryset = models.SciolModel.objects.all()
     serializer_class = serializers.SciolSerializers
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated, IsOwner)
 
 
 class EducatioCreareApiView(CreateAPIView):
@@ -73,7 +73,7 @@ class EducatioCreareApiView(CreateAPIView):
 class EducatioUpdateDeleteRetiveApiView(RetrieveUpdateDestroyAPIView):
     queryset = models.EducationModel.objects.all()
     serializer_class = serializers.EducationSerializers
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated, IsOwner)
 
 
 class ExprienceCreateApiView(CreateAPIView):
@@ -88,7 +88,7 @@ class ExprienceCreateApiView(CreateAPIView):
 class ExpriencRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     queryset = models.ExpreienceWorkModel
     serializer_class = serializers.ExprienceWorkSerializers
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated, IsOwner)
 
 
 class ProjectCreateApiView(CreateAPIView):
@@ -103,7 +103,7 @@ class ProjectCreateApiView(CreateAPIView):
 class ProjectUpdateRetriveDestroyApiView(RetrieveUpdateDestroyAPIView):
     queryset = models.ProjectModel.objects.all()
     serializer_class = serializers.ProjectSerializers
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated, IsOwner)
 
 
 class AwardsCreateApiView(CreateAPIView):
@@ -118,7 +118,7 @@ class AwardsCreateApiView(CreateAPIView):
 class AwardsRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     queryset = models.AwardsModel.objects.all()
     serializer_class = serializers.AwardsSerilizers
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated, IsOwner)
 
 
 class BookArticleCreateApiView(CreateAPIView):
@@ -133,7 +133,7 @@ class BookArticleCreateApiView(CreateAPIView):
 class BookArticleRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     queryset = models.BoookArticleModel.objects.all()
     serializer_class = serializers.BookArticleSerilizers
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated, IsOwner)
 
 
 class ContactUsCreateApiview(CreateAPIView):

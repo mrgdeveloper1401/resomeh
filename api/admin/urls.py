@@ -6,14 +6,14 @@ from . import views
 
 router = DefaultRouter()
 router.register(r"users", views.UserViewSet, basename="user")
-router.register(r"aboutme", views.AboutViewSet, basename="aboutme")
+router.register(r"about-me", views.AboutViewSet, basename="aboutme")
 router.register(r"skill", views.SkillviewSet, basename="skill")
 router.register(r"scicol", views.SciolviewSet, basename="scicol")
-router.register(r"expreiencework", views.ExpreienceWorkviewSet, basename="expreiencework")
+router.register(r"expreience-work", views.ExpreienceWorkviewSet, basename="expreiencework")
 router.register(r"education", views.EducationviewSet, basename="education")
 router.register(r"project", views.ProjectviewSet, basename="project")
 router.register(r"awards", views.AwardsviewSet, basename="awards")
-router.register(r"boookarticle", views.BoookArticleviewSet, basename="boookarticle")
+router.register(r"boook-article", views.BoookArticleviewSet, basename="boookarticle")
 router.register(r"contactus", views.ContactUsviewSet, basename="contactus")
 
 
