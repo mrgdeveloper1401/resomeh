@@ -1,66 +1,45 @@
-# services:
-#   app:
-#     build: 
-#       context: .
-#     command: > 
-#       sh -c "python manage.py makemigrations && 
-#               python manage.py migrate && 
-#               python manage.py runserver 0.0.0.0:8000"
-#     ports:
-#       - 8000:8000
-#     volumes:
-#       - . :/src
-
-#   db:
-#     image: postgresql:15-lpine
-#     ports:
-#       - 5432:5432
-#     volumes:
-#       - postgres-data:/var/lib/postgres/data
-#     environment:
-#       - POSTGRES_DB=cv
-#       - POSTGRES_USER=cv_admin
-#       - POSTGRES_PASSWORD=cv_admin.1234
-
-# volumes:
-#   postgres-data:
-
 services:
   db:
     container_name: postgres
-    image: postgres:alpine
+    image: postgres
     restart: always
-    ports:
-      - "5432:5432"
-    networks:
-      - main
     environment:
       - POSTGRES_DB=cv
       - POSTGRES_USER=cv_admin
       - POSTGRES_PASSWORD=cv_admin.1234
     volumes:
-      - :/var/lib/postgresql/data
+      - postgres:/var/lib/postgresql/data
 
 
   app:
-    build: .
-    container_name: django_project
+    build:
+      context: .
+    container_name: django-cv
     command: >
-      sh -c "python manage.py migrate &&
-       python manage.py makemigrations &&
-       python manage.py runserver 0.0.0.0:8000"
+      sh -c "python manage.py migrate && 
+       python manage.py collectstatic --no-input --clear &&
+       gunicorn mini_trello.wsgi:application --bind 0.0.0.0:8000"
     volumes:
-      - .:"/src/"
+      - static:/src/static
+      - media:/src/media
     depends_on:
       - db
     expose:
       - "8000"
-    networks:
-      - main
     restart: always
+    environment:
+      - DEBUG=FALSE
+      - ALLOWED-HOST=*
+      - DATABASE-NAME=cv
+      - DATABASE-USER=cv_admin
+      - DATABASE-PASSWORD=cv_admin.1234
+      - DATABASE-HOST=database
+      - DATABASE-PORT=5432
 
-networks:
-  main:
+volumes:
+  postgres
+  static
+  media
   
 
 

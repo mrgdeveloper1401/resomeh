@@ -1,13 +1,10 @@
-FROM python:3.10-alpine
+FROM python:3.11-slim-buster
 
 WORKDIR /src
 
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
 COPY . /src
-COPY /requirements/base.txt  /src/
 
-RUN pip install -U pip
-RUN pip install -r base.txt
-
-EXPOSE 8000
-
-CMD [ "gunicorn", "cv.wsgi", ":8000" ]
+RUN pip install --upgrade pip && pip install -r /src/reqrequirements/base.txt
